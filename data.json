@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Go shopping",
+    "status": "completed",
+    "dueDate": "14- october-2025"
+  },
+  {
+    "title": "visit my parents",
+    "status": "pending",
+    "dueDate": "15th- october-2025"
+  },
+  {
+    "title": "write some code",
+    "status": "typing",
+    "dueDate": "16th- october-2025"
+  }
+]
