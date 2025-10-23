@@ -1,33 +1,34 @@
-// Working with JavaScript Object Notation (JSON) for storing file data
+const fs = require('fs');
 
-const fs = require("fs");
+// Path to your data file
+const FILE_PATH = './data.json';
 
-function append(data) {
-  const filePath = "./data.json";
-  let currData = [];
-
-  // Try reading existing data
+// Helper: read data from file
+function fetch() {
   try {
-    if (fs.existsSync(filePath)) {
-      const fileContent = fs.readFileSync(filePath, "utf8");
-      if (fileContent.trim()) {
-        currData = JSON.parse(fileContent);
-      }
+    // Check if file exists
+    if (!fs.existsSync(FILE_PATH)) {
+      fs.writeFileSync(FILE_PATH, JSON.stringify([]));
     }
+
+    const data = fs.readFileSync(FILE_PATH, 'utf8');
+    return JSON.parse(data || '[]');
   } catch (err) {
-    console.log("Error reading file:", err);
+    console.error("Error reading data:", err);
+    return [];
   }
-
-  // Add new data to the array
-  currData.push(data);
-
-  // Convert back to JSON
-  const todoJSON = JSON.stringify(currData, null, 2);
-
-  // Write updated data to file
-  fs.writeFileSync(filePath, todoJSON);
-
-  console.log("Successfully updated file!");
 }
 
-module.exports = append;
+// Helper: add new data to file
+function append(newItem) {
+  try {
+    const currentData = fetch();
+    currentData.push(newItem);
+    fs.writeFileSync(FILE_PATH, JSON.stringify(currentData, null, 2));
+  } catch (err) {
+    console.error("Error writing data:", err);
+  }
+}
+
+// Export functions
+module.exports = { fetch, append };
