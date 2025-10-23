@@ -12,9 +12,9 @@ server.use(cors());
 
 // Sample task
 let todo = {
-  title: "write some code",
-  status: "typing",
-  dueDate: "16th-October-2025"
+  title: "Kanzu code foundation",
+  status: "Great learning all the time",
+  dueDate: "17th-October-2025"
 };
 
 // Append initial data
