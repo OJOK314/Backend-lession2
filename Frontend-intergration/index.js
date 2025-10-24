@@ -1,5 +1,5 @@
-let todobox = document.getElementById("todo-box")
-let apiurl = " https://backend-lession2-6.onrender.com"
+let todobox = document.getElementById('todo-box')
+let apiurl = 'https://backend-lession2-6.onrender.com/data'
 
 async function fetchData() {
     let respones = await fetch(apiurl)
@@ -7,4 +7,6 @@ async function fetchData() {
     console.log(data)
     
 }
-fetchData
+fetchData()
+
+
